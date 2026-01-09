@@ -20,3 +20,10 @@ leveldb-c
 .classpath
 .settings
 eclipse-classes
+/platforms/
+build-tools/
+platforms/
+android-sdk/
+node_modules/
+build
+.gradle

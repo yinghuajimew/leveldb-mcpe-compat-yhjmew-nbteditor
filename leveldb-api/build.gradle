@@ -16,11 +16,6 @@ android {
 }
 
 dependencies {
-    implementation 'org.xerial.snappy:snappy-java:1.1.10.4'
-    implementation 'org.iq80.snappy:snappy:0.5'
-    implementation 'com.google.guava:guava:33.4.0-android'
-    implementation project(':leveldb-api')
-    testImplementation("joda-time:joda-time:2.3")
     testImplementation("org.testng:testng:6.9.6")
 }
 
