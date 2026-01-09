@@ -61,7 +61,8 @@ public final class ZLib
                     buffer.position(buffer.position() + length);
                 }
                 /// ANDROID COMPAT END
-            } else {
+            }
+            else {
                 inflater.setInput(compressed);
                 while (!inflater.finished()) {
                     if (inflater.inflate(buffer) == 0) {
