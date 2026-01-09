@@ -1,5 +1,7 @@
 # LevelDB MCPE in Java
 
+之后你自己要是想编译，fork下来然后gradle build就行，如果懒得fork，自己github上随便新建一个文件然后提交commit，触发actions让他自动编译后就能生成aar和jar
+
 This project is a fork of https://github.com/pcmind/leveldb aiming to implement the changes made
 in https://github.com/Mojang/leveldb-mcpe/ where relevant to allow the library to read MCPE.
 
