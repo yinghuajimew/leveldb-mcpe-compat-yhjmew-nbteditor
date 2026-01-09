@@ -40,6 +40,15 @@ jobs:
       
       - name: Build with gradle
         run: gradle build
+      
+      - name: Rename Classes JAR
+        run: |
+          mv leveldb/build/intermediates/runtime_library_classes_jar/release/bundleLibRuntimeToJarRelease/classes.jar leveldb/build/intermediates/runtime_library_classes_jar/release/bundleLibRuntimeToJarRelease/leveldb-1.1.0-Release.jar
+          mv leveldb/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar leveldb/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/leveldb-1.1.0-Debug.jar
+          mv leveldb-api/build/intermediates/runtime_library_classes_jar/release/bundleLibRuntimeToJarRelease/classes.jar leveldb-api/build/intermediates/runtime_library_classes_jar/release/bundleLibRuntimeToJarRelease/leveldb-api-1.1.0-Release.jar
+          mv leveldb-api/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar leveldb-api/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/leveldb-api-1.1.0-Debug.jar
+          mv leveldb-benchmark/build/intermediates/runtime_library_classes_jar/release/bundleLibRuntimeToJarRelease/classes.jar leveldb-benchmark/build/intermediates/runtime_library_classes_jar/release/bundleLibRuntimeToJarRelease/leveldb-benchmark-1.1.0-Release.jar
+          mv leveldb-benchmark/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar leveldb-benchmark/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/leveldb-benchmark-1.1.0-Debug.jar
 
       - name: Upload file
         uses: actions/upload-artifact@v4
@@ -47,5 +56,8 @@ jobs:
           name: leveldb-libs
           path: |
             leveldb-api/build/outputs/aar/
+            leveldb-api/build/intermediates/runtime_library_classes_jar/
             leveldb/build/outputs/aar/
+            leveldb/build/intermediates/runtime_library_classes_jar/
             leveldb-benchmark/build/outputs/aar/
+            leveldb-benchmark/intermediates/runtime_library_classes_jar/

@@ -23,13 +23,11 @@ dependencies {
     testImplementation("org.testng:testng:6.9.6")
 }
 
-task ldb_makeJar(type: Copy) {
-    //设置拷贝的文件来源
-    from('build/outputs/aar/')
-    ////新生成的jar包的目录
-    into('build/libs/')
-    ////重命名成我们设定的名字
-    rename ('leveldb-release.aar', 'leveldb-release.jar')
-    rename ('leveldb-debug.aar', 'leveldb-debug.jar')
+task makeJar(type: Copy) {
+    delete "libs/" + "leveldb-api-1.1.0.jar"
+    from("build/intermediates/runtime_library_classes_jar/release/" + "classes.jar")
+    into("libs/")
+    rename("classes.jar", "leveldb-api-1.1.0.jar")
 }
-ldb_makeJar.dependsOn(build)
+ 
+makeJar.dependsOn(build)

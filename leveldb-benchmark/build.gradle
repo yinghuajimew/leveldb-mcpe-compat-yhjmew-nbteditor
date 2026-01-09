@@ -1,6 +1,15 @@
 apply plugin: 'com.android.library'
 
 android {
+    task makeJar(type: Copy) {
+        delete "libs/" + "leveldb-benchmark-1.1.0.jar"
+        from("build/intermediates/runtime_library_classes_jar/release/" + "classes.jar")
+        into("libs/")
+        rename("classes.jar", "leveldb-benchmark-1.1.0.jar")
+    }
+    
+    makeJar.dependsOn(build)
+
     defaultConfig {
         minSdkVersion 26
         targetSdkVersion 33
@@ -25,14 +34,3 @@ dependencies {
     implementation 'com.google.guava:guava:33.4.0-android'
     testImplementation("org.junit.jupiter:junit-jupiter-api:6.1.0-M1")
 }
-
-task ldb_makeJar(type: Copy) {
-    //设置拷贝的文件来源
-    from('build/outputs/aar/')
-    ////新生成的jar包的目录
-    into('build/libs/')
-    ////重命名成我们设定的名字
-    rename ('leveldb-release.aar', 'leveldb-release.jar')
-    rename ('leveldb-debug.aar', 'leveldb-debug.jar')
-}
-ldb_makeJar.dependsOn(build)
